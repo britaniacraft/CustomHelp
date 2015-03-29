@@ -1,0 +1,60 @@
+package com.gmail.falistos.CustomHelp;
+
+import java.util.ArrayList;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+
+public class PaginatedCommandsMessageList {
+
+	private String header = "";
+	private String footer = "";
+	
+	private int entriesPerPage = 8;
+	
+    public PaginatedCommandsMessageList(String header, String footer, int entriesPerPage) {
+    	this.setHeader(header);
+    	this.setFooter(footer);
+    	this.setEntriesPerPage(entriesPerPage);
+    }
+    
+    public PaginatedCommandsMessageList(String header, String footer) {
+    	this.setHeader(header);
+    	this.setFooter(footer);
+    }
+	
+    public PaginatedCommandsMessageList(int entriesPerPage) {
+    	this.setEntriesPerPage(entriesPerPage);
+    }
+    
+    public PaginatedCommandsMessageList() { }
+    
+    public void setHeader(String header) { 
+    	this.header = header;
+    }
+    
+    public void setFooter(String footer) {
+    	this.footer = footer;
+    }
+    
+    public void setEntriesPerPage(int entriesPerPage) {
+    	this.entriesPerPage = entriesPerPage;
+    }
+    
+    public void send(CommandSender sender, ArrayList<String> list, int page) {
+    	if (list.size() == 0) return;
+    	
+    	int pages = list.size() / this.entriesPerPage;
+    	if (list.size() % this.entriesPerPage == 0) pages--;
+    	
+    	page = Math.max(0, Math.min(page, pages));
+        
+    	sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.header.replace("{page}", ""+page+1).replace("{maxpages}", ""+pages+1).replace("{nextpage}", ""+page+2)));
+        
+        for (int i = this.entriesPerPage * page; i < this.entriesPerPage * page + this.entriesPerPage  && i < list.size(); i++) {
+            sender.sendMessage(list.get(i));
+        }
+        
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.footer.replace("{page}", ""+page+1).replace("{maxpages}", ""+pages+1).replace("{nextpage}", ""+page+2)));
+	}
+}

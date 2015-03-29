@@ -1,0 +1,11 @@
+name: CustomHelp
+main: com.gmail.falistos.CustomHelp.CustomHelp
+version: 1.0
+author: Falistos
+commands:
+  help:
+    description: Show help.
+permissions:
+  customhelp.reload:
+    description: Allow to reload plugin.
+    default: op

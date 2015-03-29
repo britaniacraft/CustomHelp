@@ -1,0 +1,7 @@
+header: "&b*** Server commands &7(Page {page} of {maxpages})"
+footer: "&3Use &b/help {nextpage} &3to show next page"
+commands:
+    "/spawn": "Teleport to spawn point"
+    "/money": "Show your money balance"
+    "/kit": "Show unlocked kits"
+    "/test": "Test command"
