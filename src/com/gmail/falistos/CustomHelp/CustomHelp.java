@@ -50,7 +50,7 @@ public class CustomHelp extends JavaPlugin implements Listener {
 				list.add(ChatColor.GOLD+entry.getKey()+ChatColor.WHITE+": "+entry.getValue());
 			}
 			
-			new PaginatedCommandsMessageList(this.getConfig().getString("header"), this.getConfig().getString("footer")).send(sender, list, page);
+			new PaginatedMessageList(this.getConfig().getString("header"), this.getConfig().getString("footer")).send(sender, list, page);
 			
 			return true;
 		}
