@@ -49,12 +49,12 @@ public class PaginatedMessageList {
     	
     	page = Math.max(0, Math.min(page, pages));
         
-    	sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.header.replace("{page}", ""+page+1).replace("{maxpages}", ""+pages+1).replace("{nextpage}", ""+page+2)));
+    	sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.header.replace("{page}", ""+(page+1)).replace("{maxpages}", ""+(pages+1)).replace("{nextpage}", ""+(page+2))));
         
         for (int i = this.entriesPerPage * page; i < this.entriesPerPage * page + this.entriesPerPage  && i < list.size(); i++) {
             sender.sendMessage(list.get(i));
         }
         
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.footer.replace("{page}", ""+page+1).replace("{maxpages}", ""+pages+1).replace("{nextpage}", ""+page+2)));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.footer.replace("{page}", ""+(page+1)).replace("{maxpages}", ""+(pages+1)).replace("{nextpage}", ""+(page+2))));
 	}
 }
