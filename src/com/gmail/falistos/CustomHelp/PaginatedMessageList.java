@@ -55,6 +55,8 @@ public class PaginatedMessageList {
             sender.sendMessage(list.get(i));
         }
         
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.footer.replace("{page}", ""+(page+1)).replace("{maxpages}", ""+(pages+1)).replace("{nextpage}", ""+(page+2))));
+        if (pages > 1) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', this.footer.replace("{page}", ""+(page+1)).replace("{maxpages}", ""+(pages+1)).replace("{nextpage}", ""+(page+2))));
+        }
 	}
 }
