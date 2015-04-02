@@ -4,8 +4,8 @@ version: 1.0
 author: Falistos
 commands:
   help:
-    description: Show help.
+    description: Show help
 permissions:
   customhelp.reload:
-    description: Allow to reload plugin.
+    description: Allow to reload plugin
     default: op
